@@ -48,7 +48,11 @@ function SignIn({ setAuth, isAuth }) {
         }
       })
       .catch((err) => {
-        setErrorMessage(err.response.data.message);
+        if (err.response) {
+          setErrorMessage(err.response.data.message);
+        } else {
+          alert("Server is down");
+        }
       });
   }
 
